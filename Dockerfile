@@ -72,14 +72,23 @@ WORKDIR /
 
 
 ### git clone and file add
+# gitのglobal設定 dockerと区別するためにsokka-する
+RUN git config --global user.name "yuji aaaaaa docker"
+RUN git config --global user.name "aaaaaa+docker@gmail.com"
+# git を/にcloneする
 RUN git clone https://github.com/git/git/
 # この辺どうしようかな
-ADD .bashrc /root/.bashrc
-ADD .vimrc /root/.vimrc
-ADD trades /root/trades
-
+WORKDIR /root/
+RUN git clone https://github.com/yujipyaaaaaaaaaaaaaaaaaaaaaaa/dotfiles
+RUN rm .bashrc
+RUN ln -s ./dotfiles/.bashrc
+RUN ln -s ./dotfiles/.vimrc
 WORKDIR /
 
+
+### 日本語入力を出来るようにする
+RUN apt-get install -y language-pack-ja-base language-pack-ja
+ENV LANG=ja_JP.UTF-8
 
 ### install python3 modules
 
