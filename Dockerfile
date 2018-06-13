@@ -83,6 +83,7 @@ RUN git clone https://github.com/yujipyaaaaaaaaaaaaaaaaaaaaaaa/dotfiles
 RUN rm .bashrc
 RUN ln -s ./dotfiles/.bashrc
 RUN ln -s ./dotfiles/.vimrc
+RUN vim +":PlugInstall" +:q +:q
 WORKDIR /
 
 
