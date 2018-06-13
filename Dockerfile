@@ -92,6 +92,8 @@ RUN apt-get install -y language-pack-ja-base language-pack-ja
 ENV LANG=ja_JP.UTF-8
 
 ### install python3 modules
+RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip3
 
 
 
